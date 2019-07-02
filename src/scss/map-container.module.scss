@@ -1,0 +1,19 @@
+.map-container {
+  flex: 2;
+  position: relative;
+  .map-switcher-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+  .switcher-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,65 @@
+@import "~react-vis/dist/style";
+@import "~react-vis/dist/styles/legends";
+
+* {
+  box-sizing: border-box;
+}
+
+#analytics-panel {
+  background: #fff;
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 100%;
+  max-width: 650px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+  transition: 0.4s;
+  width: 100%;
+  z-index: 2;
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.collapse-btn {
+  cursor: pointer;
+  height: 60px;
+  left: -25px;
+  padding: 5px;
+  position: absolute;
+  top: 30px;
+}
+#analytics-panel:not(.active) .collapse-btn {
+  transform: rotate(-180deg);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 100%;
+  justify-content: space-evenly;
+  overflow-y: scroll;
+}
+
+.card {
+  border: 1px solid #ccc;
+  margin-top: 15px;
+  padding: 10px;
+  width: 300px;
+  h3 {
+    color: #888;
+    font-size: 15px;
+    margin: 0 0 10px;
+  }
+  h4 {
+    font-size: 20px;
+    margin: 0 0 10px;
+  }
+}
+
+.rv-radial-chart,
+.rv-discrete-color-legend {
+  display: inline-block;
+}

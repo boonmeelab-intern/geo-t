@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+  height: 80px;
+  margin: 10px 0;
+  
+  .label-container {
+    display: flex;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .reference-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    width: 1px;
+    background-color: black;
+  }
+}

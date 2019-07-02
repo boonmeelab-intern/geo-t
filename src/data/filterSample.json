@@ -1,0 +1,16 @@
+[
+  {
+    "time": {
+      "week": [5, 6],
+      "date_interval": {
+        "start": "1 JUN 2019",
+        "end": "30 JUN 2019"
+      },
+      "time_interval": {
+        "min": 7,
+        "max": 11
+      }
+    },
+    "feature": {}
+  }
+]

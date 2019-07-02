@@ -1,0 +1,10 @@
+.switcher button {
+  border: none;
+  padding: 5px 10px;
+
+  &.inactive {
+    background-color: #011326;
+    color: white;
+    opacity: 0.8;
+  }
+}

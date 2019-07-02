@@ -1,0 +1,47 @@
+options:
+  docker: true
+pipelines:
+  default:
+    - step:
+        name: Test
+        image: node:11
+        script:
+          - npm install
+          - npm test
+          - node -p "require('./package.json').version" > ./VERSION
+        artifacts:
+          - VERSION
+  branches:
+    master:
+      - step:
+          name: Test
+          image: node:11
+          script:
+            - npm install
+            - npm test
+            - node -p "require('./package.json').version" > ./VERSION
+          artifacts:
+            - VERSION
+      - step:
+          name: Build
+          image: google/cloud-sdk:latest
+          size: 2x
+          script:
+            # Setup
+            - export ENVIRONMENT=development
+            - VERSION=$(cat ./VERSION)
+            - export IMAGE_NAME=asia.gcr.io/$GCP_PROJECT/$BITBUCKET_REPO_SLUG
+            - export IMAGE_TAG=$VERSION.$BITBUCKET_COMMIT
+            - echo $GCP_SA_KEYFILE | base64 -d > ~/.gcloud-api-key.json
+            - gcloud auth activate-service-account --key-file ~/.gcloud-api-key.json
+            - gcloud config set project $GCP_PROJECT
+            - gcloud auth configure-docker --quiet
+            # Build Docker Image
+            - docker build . -t $IMAGE_NAME:$IMAGE_TAG --build-arg VERSION=$VERSION
+            # Publish to Google Container Registry
+            - docker push $IMAGE_NAME:$IMAGE_TAG
+            - gcloud --quiet container images add-tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
+definitions:
+  services:
+    docker:
+      memory: 2048

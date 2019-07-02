@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  # druid:
+  #   image: asia.gcr.io/gcp-geo-intel-dev/product-geo-druid-dev:0.14.0-incubating-1.0
+  #   environment:
+  #     LOG_LEVEL: error
+  #   ports:
+  #     - 8888:8888
+
+  backend:
+    image: asia.gcr.io/gcp-geo-intel-dev/product-service-analytics:latest
+    environment:
+      # DRUID_URL: http://druid:8888/druid/v2
+      DRUID_URL: http://localhost:8888/druid/v2
+      DRUID_DATASOURCE: grid_usage
+      SERVER_PORT: 5000
+    ports:
+      - 5000:5000
+
+  # frontend:
+  #   build:
+  #     context: .
+  #     args:
+  #       VERSION: ${VERSION}
+  #   environment:
+  #     MapboxAccessToken: ${MAPBOX_ACCESS_TOKEN}
+  #     AnalyticsServiceEndpoint: http://backend:8080
+  #     # LastAvailableDate
+  #   ports:
+  #     - 8000:80

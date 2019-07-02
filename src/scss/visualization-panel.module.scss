@@ -1,0 +1,30 @@
+.viz-panel {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  z-index: 100;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21);
+  max-height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &.floating {
+    position: fixed;
+    right: 0;
+    margin: 5px;
+    width: 50vw;
+    box-shadow: none;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+}

@@ -1,0 +1,30 @@
+.site-header {
+  background: #011326;
+
+  .container {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    height: 35px;
+    padding: 0 0;
+
+    div {
+      display: flex;
+      flex-direction: row;
+
+      .site-title {
+        margin: 0 1rem;
+        font-size: 12px;
+        a {
+          text-decoration: none;
+          color: #ffffff;
+        }
+      }
+
+      button {
+        background: none;
+        color: #ffffff;
+      }
+    }
+  }
+}
